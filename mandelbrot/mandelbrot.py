@@ -20,9 +20,23 @@ def isMandelbrot(c):
   print "Is Mandelbrot!"
   return True
 
+def initExamples():
+  Mandelbrot_yes = set()
+  Mandelbrot_no = set()
+  Mandelbrot_yes.add(complex(0,0))
+  Mandelbrot_yes.add(complex(-1,0))
+  Mandelbrot_yes.add(complex(-1.1,0))
+  Mandelbrot_yes.add(complex(-1.3,0))
+  Mandelbrot_yes.add(complex(-1.38,0))
+  Mandelbrot_yes.add(complex(0,1))
+  Mandelbrot_no.add(complex(1,0))
+  Mandelbrot_no.add(complex(0,2))
+  return Mandelbrot_yes, Mandelbrot_no
 
 
 def runUnitTests():
+  MYes, Mno = initExamples()
+
   z = generateComplexNumber()
   print z
   isMandelbrot(z)
@@ -32,4 +46,8 @@ def runUnitTests():
 
   print isMandelbrot(complex(-1, 0))
   print isMandelbrot(complex(1, 0))
+
+if __name__ == "__main__":
+  runUnitTests()
+
 
