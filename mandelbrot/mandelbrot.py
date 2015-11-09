@@ -1,7 +1,7 @@
 # Author: Pieter de Jong
 
 import random
-import pylab as pl
+from matplotlib import mpl,pyplot
 
 def generateComplexNumber():
   random.seed()
@@ -34,8 +34,19 @@ def initExamples():
   Mandelbrot_no.add(complex(0,2))
   return Mandelbrot_yes, Mandelbrot_no
 
+def plot():
+  cmap = mpl.colors.ListedColormap(['black','red'])
+  bounds=[-6,-2,2,6]
+  norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
 
+  cmap = mpl.colors.ListedColormap(['blue','black','red'])
+  bounds=[-6,-2,2,6]
+  norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
 
+  pyplot.colorbar(img,cmap=cmap, 
+                norm=norm,boundaries=bounds,ticks=[-5,0,5])
+
+  pyplot.show()
 
 def runUnitTests():
   MYes, Mno = initExamples()
