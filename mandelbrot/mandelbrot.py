@@ -1,6 +1,7 @@
 # Author: Pieter de Jong
 
 import random
+import pylab as pl
 
 def generateComplexNumber():
   random.seed()
@@ -17,8 +18,8 @@ def isMandelbrot(c):
     absZ = abs(z)
     if absZ > 2:
       return False
-  print "Is Mandelbrot!"
   return True
+
 
 def initExamples():
   Mandelbrot_yes = set()
@@ -34,8 +35,26 @@ def initExamples():
   return Mandelbrot_yes, Mandelbrot_no
 
 
+
+
 def runUnitTests():
   MYes, Mno = initExamples()
+  print "Testing numbers which are in M set:"
+  for z in MYes:
+    if isMandelbrot(z) is True:
+      print "PASSED"
+    else:
+      print "FAILED"
+  
+  print "Testing numbers which are NOT in M set:"
+  for z in Mno:
+    if isMandelbrot(z) is False:
+      print "PASSED"
+    else:
+      print "FAILED"
+
+  
+
 
   z = generateComplexNumber()
   print z
