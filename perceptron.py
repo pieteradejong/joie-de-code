@@ -21,6 +21,9 @@ class Perceptron:
         self.weight_vector = [a + b for (a,b) in zip(self.weight_vector, adjustment)]
         print self.weight_vector
 
+  def setLearningRate(self, number):
+    self.learning_rate = number
+
   def sign(self, number):
     if number < 0:
       return -1
@@ -31,6 +34,28 @@ class Perceptron:
 if __name__ == "__main__":
   p = Perceptron()
   p.train()
+
+# ideas: 
+# parametrize dim
+# learning rate as arg
+# refactor y
+# create a few testcases
+
+# API should be :
+
+# import Percepton
+# p = Perceptron()
+# p.setLearningRate(0.1)
+# p.initializeWeights()
+# p.train(samples)
+# p.classify(example)
+
+# python perceptron.py
+# [use cmd line args]
+
+
+
+
 
 
 
