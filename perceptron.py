@@ -49,13 +49,6 @@ def testTraining():
       p.Sample(x=[1,0,0,1,0],y=-1),
       p.Sample(x=[1,0,1,0,1],y=1),
       p.Sample(x=[1,0,1,1,0],y=-1)
-
-      # [1,1,0,1,1,1],
-      # [0,0,1,1,0,-1],
-      # [0,1,1,0,0,1],
-      # [1,0,0,1,0,-1],
-      # [1,0,1,0,1,1],
-      # [1,0,1,1,0,-1]
     ]
     p.train(training_data)
     print "\nTesting training result:\n"
@@ -78,28 +71,3 @@ def testSign():
 
 if __name__ == "__main__":
   testTraining()
-
-# ideas: 
-# parametrize dim
-# learning rate as arg
-# refactor y
-# create a few testcases
-
-# API should be :
-
-# import Percepton
-# p = Perceptron()
-# p.setLearningRate(0.1)
-# p.initializeWeights()
-# p.train(samples)
-# p.classify(example)
-
-# python perceptron.py
-# [use cmd line args]
-
-
-
-
-
-
-
