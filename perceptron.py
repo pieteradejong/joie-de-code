@@ -17,7 +17,6 @@ class Perceptron:
       if self.sign(y_prime) != self.sign(sample.y) or y_prime == 0:
         adjustment = [self.learning_rate * sample.y * x for x in sample.x]
         self.weight_vector = [a + b for (a,b) in zip(self.weight_vector, adjustment)]
-        print self.weight_vector
 
   def classify(self, sampleX):
     # sampleX only includes the x component of a sample
@@ -51,11 +50,10 @@ def testTraining():
       p.Sample(x=[1,0,1,1,0],y=-1)
     ]
     p.train(training_data)
-    print "\nTesting training result:\n"
+    print "Testing training result:\n"
     print "Expect ", p.weight_vector, " to equal [0,1,0,-.5,.5]"
-    print "\n"
 
-    print "Testing classification result:\n"
+    print "\nTesting classification result:\n"
     print "Expect ", training_data[0].x, " to be classified as +1. Really: ", p.classify(training_data[0].x)
     print "Expect ", training_data[1].x, " to be classified as 0. Really: ", p.classify(training_data[1].x)
     print "Expect ", training_data[2].x, " to be classified as +1. Really: ", p.classify(training_data[2].x)
