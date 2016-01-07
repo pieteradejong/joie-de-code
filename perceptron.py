@@ -51,14 +51,14 @@ def testTraining():
     ]
     p.train(training_data)
     print "Testing training result:\n"
-    print "Expect ", p.weight_vector, " to equal [0,1,0,-.5,.5]"
+    print "Expect: \n", p.weight_vector, " to equal\n[0,1,0,-.5,.5]"
 
     print "\nTesting classification result:\n"
-    print "Expect ", training_data[0].x, " to be classified as +1. Really: ", p.classify(training_data[0].x)
+    print "Expect ", training_data[0].x, " to be classified as 1. Really: ", p.classify(training_data[0].x)
     print "Expect ", training_data[1].x, " to be classified as 0. Really: ", p.classify(training_data[1].x)
-    print "Expect ", training_data[2].x, " to be classified as +1. Really: ", p.classify(training_data[2].x)
+    print "Expect ", training_data[2].x, " to be classified as 1. Really: ", p.classify(training_data[2].x)
     print "Expect ", training_data[3].x, " to be classified as 0. Really: ", p.classify(training_data[3].x)
-    print "Expect ", training_data[4].x, " to be classified as +1. Really: ", p.classify(training_data[4].x)
+    print "Expect ", training_data[4].x, " to be classified as 1. Really: ", p.classify(training_data[4].x)
     print "Expect ", training_data[5].x, " to be classified as 0. Really: ", p.classify(training_data[5].x)
 
 
