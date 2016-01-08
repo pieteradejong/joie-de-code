@@ -1,0 +1,36 @@
+import math
+import sys
+
+# assumes two points in R^2 (points in 2D-space)
+class Similarity():
+
+  def euclidian(self, a, b):
+    return self.minkowski(a, b, 2)
+
+  def manhattan(self, a, b):
+    return self.minkowski(a, b, 1)
+
+  def minkowski(self, a, b, p):
+    p = float(p) # ensure 1/p is accurate when p is int
+    sum = math.fabs(a[0]-b[0])**p + math.fabs(a[1]-b[1])**p 
+    return sum**(1/p)
+
+  def cosine(self, a, b):
+    dotprod = a[0] * b[0] + a[1] * b[1]
+    a_Magnitude = math.sqrt(a[0]**2 + a[1]**2)
+    b_Magnitude = math.sqrt(b[0]**2 + b[1]**2)
+    res = float(dotprod) / (a_Magnitude * b_Magnitude)
+    return res
+
+  def jaccard(self, a, b):
+    a_set = set(a)
+    b_set = set(b)
+    size_of_intersection = len( a_set.intersection(b_set) )
+    size_of_union = len( a_set.union(b_set) )
+    return float(size_of_intersection) / size_of_union
+    
+if __name__ == '__main__':
+  Similarity().main()
+
+
+
