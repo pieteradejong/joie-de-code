@@ -8,10 +8,12 @@ class Perceptron:
     self.learning_rate = learning_rate
 
   def train(self, training_data): 
-    # method accepts list of named tuples with sample.x (itself a list) and sample.y
-    # e.g. namedtuple('Labeled_Sample', 'x y')
+    '''
+    training_data example: namedtuple('Labeled_Sample', 'x y')
+    for each sample in training_data: sample.x is data, sample.y is label
+    '''
     self.dim = len(training_data[0].x)
-    self.init_weights(self.dim)
+    self.initWeights(self.dim)
     for sample in training_data:
       y_prime = numpy.dot(self.weight_vector, sample.x)
       if self.sign(y_prime) != self.sign(sample.y) or y_prime == 0:
@@ -19,14 +21,17 @@ class Perceptron:
         self.weight_vector = [a + b for (a,b) in zip(self.weight_vector, adjustment)]
 
   def classify(self, sampleX):
-    # sampleX only includes the x component of a sample
+    '''
+    sampleX includes ONLY the sample.x (data) component of a sample,
+    and NOT the label which would be sample.y
+    '''
     dotprod = numpy.dot(self.weight_vector, sampleX)
     if dotprod > 0:
       return 1
     else:
       return 0
 
-  def init_weights(self, dim):
+  def initWeights(self, dim):
     self.weight_vector = [0] * dim
 
   def setLearningRate(self, number): 
