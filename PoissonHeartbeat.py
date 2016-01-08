@@ -2,10 +2,10 @@ import time
 import random
 
 class PoissonHeartbeat:
-  def __init__(self, events=10, lambd=0.1):
-    self.events = events
+  def __init__(self, numberOfEvents=10, lambd=0.1):
+    self.numberOfEvents = numberOfEvents
     self.lambd = lambd
-    intervals = [random.expovariate(self.lambd) for i in range(self.events)]
+    intervals = [random.expovariate(self.lambd) for i in range(self.numberOfEvents)]
     print intervals, "\n"
     for v in intervals:
       time.sleep(v)
