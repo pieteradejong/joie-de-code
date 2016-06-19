@@ -1,7 +1,44 @@
-$( "form" ).submit(function( event ) {
+var ele = document.getElementById("strform");
+if(ele.addEventListener){
+    ele.addEventListener("submit", formHandler, false);  //Modern browsers
+}else if(ele.attachEvent){
+    ele.attachEvent('onsubmit', formHandler);            //Old IE
+}
+
+function formHandler(event) {
+  // alert("handled!");
+  event.preventDefault();
+  var str1 = $("input[name='str1']").val();
+  var str2 = $("input[name='str2']").val();
+  console.log("str1: ", str1);
+  console.log("str2: ", str2);
+
+  sendStrings(str1, str2);
+}
+
+function sendStrings(str1, str2) {
+  $.ajax({
+        url: '/submit',
+        data: {'str1': str1, 'str2': str2},
+        type: 'GET',
+        success: function(response) {
+            console.log(response);
+            alert(response);
+        },
+        error: function(error) {
+            console.log(error);
+            alert(error);
+        }
+    });  
+}
+
+$( "strfffd orm" ).submit(function( event ) {
       event.preventDefault();
       var str1 = $("input[name='str1']").val();
       var str2 = $("input[name='str2']").val();
+      alert("pressed!");
+      console.log("str1: ", str1);
+      console.log("str2: ", str2);
         $.ajax({
             url: '/submit',
             data: $('form').serialize(),
