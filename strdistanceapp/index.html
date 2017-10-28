@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
 
 <html lang="en">
 <head>
@@ -20,11 +20,12 @@
 
   <script src="static/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src={{ url_for('static', test.js) }}></script>
+
   <!-- <form action="javascript: onSubmit()"> -->
-  <form>
-    <label for="str">Please enter your name:</label>
+  <form id="strform">
+    <label for="str">String 1:</label>
     <input name="str1" type="text" required autofocus>
-    <label for="str2">Please enter your name:</label>
+    <label for="str2">String 2:</label>
     <input name="str2" type="text" required>
     <input name="submit" type="submit" value="Get Distance">
 
@@ -33,5 +34,7 @@
   </form>
   <div id="distance">{{ name }}
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
