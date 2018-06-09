@@ -15,14 +15,13 @@ class BloomFilter:
     def __init__(self, n):
         self.size = n
         self.array = [None] * self.size
-        # self.hashes = [mmh3.hash, fnv1a_32, hashlib]
-        self.hashes = [mmh3.hash]
+        self.hashes = [mmh3.hash, fnv1a_32]
+        # self.hashes = [mmh3.hash, fnv1a_32, hashlib.md5]
     
     def add_item(self, s):
         for h in self.hashes:
             index = h(s) % self.size
             self.array[index] = True
-        print self.array
 
     def is_present(self, s):
         for h in self.hashes:
@@ -48,11 +47,10 @@ class BloomFilterTest(unittest.TestCase):
     TEST_STRINGS = ['coffee']
 
     def setUp(self):
-        print("Setting up...")
         self.bf = BloomFilter(10)
 
     def tearDown(self):
-        pass
+        self.bf = None
 
     def test_has_accurate_size(self):
         assert self.bf.get_size() == 10
