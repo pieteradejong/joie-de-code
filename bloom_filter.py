@@ -14,19 +14,20 @@ import hashlib
 class BloomFilter:
     def __init__(self, n):
         self.size = n
-        self.array = [None] * self.size
+        self.bitvec = bitarray(10)
+        self.bitvec.setall(0)
         self.hashes = [mmh3.hash, fnv1a_32]
         # self.hashes = [mmh3.hash, fnv1a_32, hashlib.md5]
     
     def add_item(self, s):
         for h in self.hashes:
             index = h(s) % self.size
-            self.array[index] = True
+            self.bitvec[index] = 1
 
     def is_present(self, s):
         for h in self.hashes:
             index = h(s) % self.size
-            if not self.array[index]:
+            if self.bitvec[index] == 0:
                 return False
         return True
 
