@@ -1,5 +1,7 @@
 import math
 import sys
+import unittest
+
 
 # assumes two points in R^2 (points in 2D-space)
 class Similarity():
@@ -31,6 +33,11 @@ class Similarity():
     
 if __name__ == '__main__':
   Similarity().main()
+
+
+class MyTest(unittest.TestCase):
+    def test(self):
+        self.assertEqual(fun(3), 4)
 
 
 
